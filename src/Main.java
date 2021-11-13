@@ -22,10 +22,10 @@ public class Main {
 //        System.out.println(Func.toBinary(4,20));
 
         System.out.println(Func.double_to_ieee(7.3125));
-        System.out.println(Func.binary_to_decimal("111.0101"));
+        System.out.println(Func.binary_to_double("111.0101"));
         System.out.println(Func.binary_to_ieee("111.0101"));
-
-
+        System.out.println(Func.hexa_to_binary("af234d543"));
+        System.out.println(Func.hexa_to_double("af234d543"));
 
     }
 

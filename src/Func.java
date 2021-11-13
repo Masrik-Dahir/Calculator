@@ -184,7 +184,7 @@ public class Func {
 
 
 
-    public static double binary_to_decimal(String binary)
+    public static double binary_to_double(String binary)
     {
 
         int len = binary.length();
@@ -214,10 +214,78 @@ public class Func {
     }
 
     public static String binary_to_ieee(String binary){
-        double decimal = binary_to_decimal(binary);
+        double decimal = binary_to_double(binary);
         String ieee = double_to_ieee(decimal);
         return ieee;
     }
+
+    public static String hexa_to_binary(String hex){
+        hex = hex.toUpperCase();
+        String result = "";
+        for (int index = 0; index < hex.length(); index++){
+            String value = "";
+            switch (hex.charAt(index)){
+                case 'A':
+                    value = Hex.A.value;
+                    break;
+                case 'B':
+                    value = Hex.B.value;
+                    break;
+                case 'C':
+                    value = Hex.C.value;
+                    break;
+                case 'D':
+                    value = Hex.D.value;
+                    break;
+                case 'E':
+                    value = Hex.E.value;
+                    break;
+                case 'F':
+                    value = Hex.F.value;
+                    break;
+                case '0':
+                    value = Hex._0.value;
+                    break;
+                case '1':
+                    value = Hex._1.value;
+                    break;
+                case '2':
+                    value = Hex._2.value;
+                    break;
+                case '3':
+                    value = Hex._3.value;
+                    break;
+                case '4':
+                    value = Hex._4.value;
+                    break;
+                case '5':
+                    value = Hex._5.value;
+                    break;
+                case '6':
+                    value = Hex._6.value;
+                    break;
+                case '7':
+                    value = Hex._7.value;
+                    break;
+                case '8':
+                    value = Hex._8.value;
+                    break;
+                case '9':
+                    value = Hex._9.value;
+                    break;
+            }
+            result += value;
+        }
+        return result;
+    }
+
+    public static double hexa_to_double(String hexa){
+        String binary = hexa_to_binary(hexa);
+        double decimal = binary_to_double(binary);
+        return decimal;
+    }
+
+
 
 
 }
