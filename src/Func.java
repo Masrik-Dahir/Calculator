@@ -107,6 +107,10 @@ public class Func {
         int precision = 20;
         String first = wholeToBinary(wholePart);
         String second = fractionalToBinary(fraction, precision);
+
+        if (second == ""){
+            second = "0";
+        }
         return first + "." + second;
     }
 
@@ -231,7 +235,7 @@ public class Func {
         return ieee;
     }
 
-    public static String hexa_to_binary(String hex){
+    public static String hex_to_binary(String hex){
         hex = hex.toUpperCase();
         String result = "";
         for (int index = 0; index < hex.length(); index++){
@@ -285,14 +289,17 @@ public class Func {
                 case '9':
                     value = Hex._9.value;
                     break;
+                case '.':
+                    value = ".";
+                    break;
             }
             result += value;
         }
-        return result;
+        return clean(result);
     }
 
     public static double hex_to_double(String hexa){
-        String binary = hexa_to_binary(hexa);
+        String binary = hex_to_binary(hexa);
         double decimal = binary_to_double(binary);
         return decimal;
     }
@@ -307,7 +314,16 @@ public class Func {
     }
 
 
-    public static String binary_to_hex(String binary){
+    public static String binary_to_hex(String bin){
+        if (!bin.contains(".")){
+            bin = bin + ".0";
+        }
+
+        String[] split = bin.split("\\.");
+        String binary = split[0];
+        String decimal = split[1];
+
+
         if (binary.length()%4 != 0){
             int need = 4 - binary.length()%4;
             StringBuilder binaryBuilder = new StringBuilder(binary);
@@ -319,14 +335,44 @@ public class Func {
         }
         String value = "";
         value = binary_to_hex_recursion(binary,value);
-        return value;
+
+        if (decimal.length()%4 != 0){
+            int need = 4 - decimal.length()%4;
+            while (need > 0){
+                decimal += "0";
+                need --;
+            }
+
+        }
+        String value_decimal = "";
+        value_decimal = binary_to_hex_recursion(decimal,value_decimal);
+
+
+
+        return value + "." + value_decimal;
     }
 
     public static String double_to_hex(String val){
-        String binary = toBinary(val).replace(".","");
+        String binary = toBinary(val);
         String hex = binary_to_hex(binary);
 
         return hex;
+    }
+
+    public static String clean(String bin){
+        if (!bin.contains(".")){
+            bin = bin + ".0";
+        }
+
+        if (bin.startsWith("0")){
+            bin = bin.substring(1,bin.length());
+            return clean(bin);
+        }
+        else if (bin.endsWith("0")){
+            bin = bin.substring(0,bin.length()-1);
+            return clean(bin);
+        }
+        return bin;
     }
 
 

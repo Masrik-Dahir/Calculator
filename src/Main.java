@@ -18,17 +18,24 @@ public class Main {
 //        System.out.println(Func.combination(10,2));
 //        System.out.println(Func.binaryStringToDouble("1111001.0"));
 //        System.out.println(2<<1);
-//        System.out.println(Func.toBinary(2,20));
-//        System.out.println(Func.toBinary(4,20));
 
-        System.out.println(Func.double_to_ieee(7.3125));
-        System.out.println(Func.binary_to_double("111.0101"));
-        System.out.println(Func.binary_to_ieee("111.0101"));
-        System.out.println(Func.hexa_to_binary("af234d543"));
-        System.out.println(Func.hex_to_double("af234d543"));
-        System.out.println(Func.binary_to_hex("01010101000011110101010101010000101010101001010100111110100101.10101"));
-        System.out.println(Func.double_to_hex("24344324"));
-        System.out.println(Func.toBinary("24344324"));
+
+//        Decimal
+        System.out.println(Func.toBinary("24344324.23423432"));
+        System.out.println(Func.double_to_ieee(323.434234));
+        System.out.println(Func.double_to_hex("12432423432.4324234"));
+        System.out.println();
+
+//        Binary
+        System.out.println(Func.binary_to_ieee("101010101011100100101010.01010001010101"));
+        System.out.println(Func.binary_to_hex("010100001010101001.00101001"));
+        System.out.println(Func.binary_to_double("001010101001010.101010010101010101010010101"));
+        System.out.println();
+
+//        Hexadecimal
+        System.out.println(Func.hex_to_double("1212ade4221faed.42143adef23122a"));
+        System.out.println(Func.hex_to_binary("13083adf.1ef432"));
+        System.out.println();
 
     }
 
