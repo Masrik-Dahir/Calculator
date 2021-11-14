@@ -1,8 +1,4 @@
-import java.lang.reflect.Array;
 import java.math.BigInteger;
-import java.nio.ByteBuffer;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 public class Func {
 
@@ -93,9 +89,25 @@ public class Func {
 
     }
 
-    public static double toBinary(double d, int precision) {
+    public static String toBinary(String str) {
+        long d;
+        double fraction = .0;
+        if (str.contains(".")){
+            String[] lon = str.split("\\.");
+             d = Long.parseUnsignedLong(lon[0]);
+             fraction = Double.parseDouble("0."+lon[1]);
+
+        }
+        else{
+             d = Long.parseUnsignedLong(str);
+             fraction = .0;
+        }
+
         long wholePart = (long) d;
-        return Double.parseDouble(wholeToBinary(wholePart) + '.' + fractionalToBinary(d - wholePart, precision));
+        int precision = 20;
+        String first = wholeToBinary(wholePart);
+        String second = fractionalToBinary(fraction, precision);
+        return first + "." + second;
     }
 
     private static String wholeToBinary(long l) {
@@ -279,11 +291,45 @@ public class Func {
         return result;
     }
 
-    public static double hexa_to_double(String hexa){
+    public static double hex_to_double(String hexa){
         String binary = hexa_to_binary(hexa);
         double decimal = binary_to_double(binary);
         return decimal;
     }
+
+    private static String binary_to_hex_recursion(String binary, String value){
+        if (binary.length() < 4){
+            return value;
+        }
+        String remainder = binary.substring(binary.length()-4);
+        String temp_hex = Hex.decide(remainder);
+        return binary_to_hex_recursion(binary.substring(0, binary.length()-4), temp_hex + value);
+    }
+
+
+    public static String binary_to_hex(String binary){
+        if (binary.length()%4 != 0){
+            int need = 4 - binary.length()%4;
+            StringBuilder binaryBuilder = new StringBuilder(binary);
+            while (need > 0){
+                binaryBuilder.insert(0, "0");
+                need --;
+            }
+            binary = binaryBuilder.toString();
+        }
+        String value = "";
+        value = binary_to_hex_recursion(binary,value);
+        return value;
+    }
+
+    public static String double_to_hex(String val){
+        String binary = toBinary(val).replace(".","");
+        String hex = binary_to_hex(binary);
+
+        return hex;
+    }
+
+
 
 
 
