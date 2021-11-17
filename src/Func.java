@@ -94,13 +94,13 @@ public class Func {
         double fraction = .0;
         if (str.contains(".")){
             String[] lon = str.split("\\.");
-             d = Long.parseUnsignedLong(lon[0]);
-             fraction = Double.parseDouble("0."+lon[1]);
+            d = Long.parseUnsignedLong(lon[0]);
+            fraction = Double.parseDouble("0."+lon[1]);
 
         }
         else{
-             d = Long.parseUnsignedLong(str);
-             fraction = .0;
+            d = Long.parseUnsignedLong(str);
+            fraction = .0;
         }
 
         long wholePart = (long) d;
@@ -389,6 +389,7 @@ public class Func {
         return Integer.toBinaryString(result);
     }
 
+    // new comment sadsadfdsfsddsa
     public static String addBinary(String first, String second) {
         int n_first = Integer.parseInt(first, 2);
         int n_second = Integer.parseInt(second, 2);
