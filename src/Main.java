@@ -40,7 +40,7 @@ public class Main {
         System.out.println();
 
 //        1's and 2s's comp
-        System.out.println(Func.comp_1("10101010001010"));
+        System.out.println(Func.comp_1("10101010001010.0"));
         System.out.println(Func.comp_2("10101010001010"));
 
     }

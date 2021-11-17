@@ -375,10 +375,19 @@ public class Func {
         return bin;
     }
 
-    public static String comp_1(String a){
-        BigInteger twoToLength = new BigInteger("2").pow(a.length());
-        String b = twoToLength.add(new BigInteger(a, 2).not()).toString(2);
-        return b;
+    public static String comp_1(String b){
+        String a = "";
+        for (int i = 0; i < b.length(); i++) {
+            if (b.charAt(i) == '0') {
+                a += "1";
+            } else if (b.charAt(i) == '1'){
+                a += "0";
+            }
+            else {
+                a += b.charAt(i);
+            }
+        }
+        return a;
     }
 
     public static String comp_2(String first){
