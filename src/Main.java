@@ -43,6 +43,9 @@ public class Main {
         System.out.println(Func.comp_1("10101010001010.0"));
         System.out.println(Func.comp_2("10101010001010"));
 
+//        other
+        System.out.println(Func.remove_decimal("01101010101.01001"));
+
     }
 
 
