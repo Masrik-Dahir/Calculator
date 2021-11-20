@@ -47,6 +47,8 @@ public class Main {
 //        other
         System.out.println(Func.remove_decimal("01101010101.01001"));
         System.out.println(Func.hex_to_binary("abde.3d"));
+        double asd = Double.parseDouble("12.243");
+        System.out.println(asd*(-1));
 
     }
 
