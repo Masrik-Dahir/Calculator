@@ -36,15 +36,17 @@ public class Main {
 
 //        Hexadecimal
         System.out.println(Func.hex_to_double("1212ade4221faed.42143adef23122a"));
-        System.out.println(Func.hex_to_binary("13083adf.1ef432"));
+        System.out.println(Func.hex_to_binary("30.123"));
         System.out.println();
 
 //        1's and 2s's comp
         System.out.println(Func.comp_1("10101010001010.0"));
         System.out.println(Func.comp_2("10101010001010"));
+        System.out.println("");
 
 //        other
         System.out.println(Func.remove_decimal("01101010101.01001"));
+        System.out.println(Func.hex_to_binary("abde.3d"));
 
     }
 

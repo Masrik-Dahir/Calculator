@@ -295,7 +295,7 @@ public class Func {
             }
             result += value;
         }
-        return clean(result);
+        return result;
     }
 
     public static double hex_to_double(String hexa){
@@ -360,15 +360,15 @@ public class Func {
     }
 
     public static String clean(String bin){
-        if (!bin.contains(".")){
-            bin = bin + ".0";
+        if (!bin.endsWith(".")){
+            bin = bin.replace(".","");
         }
 
         if (bin.startsWith("0")){
             bin = bin.substring(1,bin.length());
             return clean(bin);
         }
-        else if (bin.endsWith("0")){
+        if (bin.endsWith("0") && bin.contains(".")){
             bin = bin.substring(0,bin.length()-1);
             return clean(bin);
         }
